@@ -15,6 +15,7 @@
         "symfony/yaml": "7.4.*"
     },
     "require-dev": {
+        "phpunit/phpunit": "^12.5"
     },
     "config": {
         "allow-plugins": {
@@ -58,7 +59,8 @@
         ],
         "cs-fix": "./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix",
         "cs-check": "./tools/php-cs-fixer/vendor/bin/php-cs-fixer check",
-        "psalm": "./tools/psalm/vendor/bin/psalm"
+        "psalm": "./tools/psalm/vendor/bin/psalm",
+        "phpunit": "phpunit"
     },
     "conflict": {
         "symfony/symfony": "*"
