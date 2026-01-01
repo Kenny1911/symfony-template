@@ -11,6 +11,7 @@
         "doctrine/doctrine-bundle": "^2.18",
         "doctrine/doctrine-migrations-bundle": "^3.7",
         "doctrine/orm": "^3.6",
+        "kenny1911/doctrine-dbal-hydrator": "^0.1",
         "kenny1911/doctrine-views-sync": "^0.2",
         "kenny1911/symfony-attribute-form": "^0.1",
         "symfony/console": "7.4.*",
