@@ -60,7 +60,12 @@
         "cs-fix": "./tools/php-cs-fixer/vendor/bin/php-cs-fixer fix",
         "cs-check": "./tools/php-cs-fixer/vendor/bin/php-cs-fixer check",
         "psalm": "./tools/psalm/vendor/bin/psalm",
-        "phpunit": "phpunit"
+        "phpunit": "phpunit",
+        "checks": [
+            "@cs-check",
+            "@phpunit",
+            "@psalm --no-cache"
+        ]
     },
     "conflict": {
         "symfony/symfony": "*"
