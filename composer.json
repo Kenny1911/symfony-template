@@ -14,6 +14,7 @@
         "kenny1911/doctrine-dbal-hydrator": "^0.1",
         "kenny1911/doctrine-views-sync": "^0.2",
         "kenny1911/symfony-attribute-form": "^0.1",
+        "kenny1911/symfony-http-exception": "^0.3",
         "symfony/console": "7.4.*",
         "symfony/dotenv": "7.4.*",
         "symfony/flex": "^2",
