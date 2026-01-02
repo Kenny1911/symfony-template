@@ -28,7 +28,7 @@ return static function (ContainerConfigurator $di, ContainerBuilder $builder): v
             ])
         ->set(TableMetadataStorageListener::class)
             ->args([
-                service('doctrine.views_sync.metadata_storage')
+                service('doctrine.views_sync.metadata_storage'),
             ])
             ->tag('doctrine.event_listener', ['event' => 'postGenerateSchema'])
 

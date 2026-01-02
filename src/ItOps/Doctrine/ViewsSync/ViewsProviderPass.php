@@ -19,6 +19,7 @@ final readonly class ViewsProviderPass implements CompilerPassInterface
         private bool $onlyAutoconfigured,
     ) {}
 
+    #[\Override]
     public function process(ContainerBuilder $container): void
     {
         foreach ($container->getDefinitions() as $id => $definition) {
