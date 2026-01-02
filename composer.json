@@ -86,6 +86,7 @@
         "psalm": "./tools/psalm/vendor/bin/psalm",
         "phpunit": "phpunit",
         "checks": [
+            "bin/console lint:container",
             "@cs-check",
             "@phpunit",
             "@psalm --no-cache"
