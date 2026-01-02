@@ -18,6 +18,7 @@ final readonly class UuidV7Generator implements UuidGenerator
         private ?ClockInterface $clock = null,
     ) {}
 
+    #[\Override]
     public function generate(): Uuid
     {
         return new UuidV7(

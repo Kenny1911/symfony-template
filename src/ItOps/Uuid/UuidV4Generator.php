@@ -12,6 +12,7 @@ use Symfony\Component\Uid\Uuid;
  */
 final readonly class UuidV4Generator implements UuidGenerator
 {
+    #[\Override]
     public function generate(): Uuid
     {
         return Uuid::v4();
