@@ -12,10 +12,10 @@ use App\Gateway\RouteName;
  */
 final class AppVariable extends \Symfony\Bridge\Twig\AppVariable
 {
-    public readonly RouteName $route;
+    public readonly RouteName $routes;
 
     public function __construct()
     {
-        $this->route = new RouteName();
+        $this->routes = new RouteName();
     }
 }
