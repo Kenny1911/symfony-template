@@ -89,7 +89,8 @@
             "@cs-check",
             "@phpunit",
             "@psalm --no-cache"
-        ]
+        ],
+        "add-override-attr": "@psalm --no-cache --alter --issues=MissingOverrideAttribute"
     },
     "conflict": {
         "symfony/symfony": "*"
