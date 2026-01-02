@@ -17,6 +17,8 @@
         "kenny1911/symfony-http-exception": "^0.3",
         "kenny1911/twig-view": "^0.1",
         "knplabs/knp-paginator-bundle": "^6.10",
+        "psr/clock": "^1.0",
+        "symfony/clock": "7.4.*",
         "symfony/console": "7.4.*",
         "symfony/dotenv": "7.4.*",
         "symfony/flex": "^2",
