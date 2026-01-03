@@ -5,7 +5,14 @@ security:
 
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        users:
+            entity:
+                class: App\User\Credentials\User
+                property: username
+
+    role_hierarchy:
+        !php/const App\User\Credentials\User::ROLE_ADMIN: !php/const App\User\Credentials\User::ROLE_USER
+        !php/const App\User\Credentials\User::ROLE_USER: ~
 
     firewalls:
         dev:
@@ -14,7 +21,7 @@ security:
             security: false
         main:
             lazy: true
-            provider: users_in_memory
+            provider: users
 
             # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -22,10 +29,19 @@ security:
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
+            form_login:
+                login_path: !php/const App\Gateway\RouteName::LOGIN
+                check_path: !php/const App\Gateway\RouteName::LOGIN
+                enable_csrf: true
+            logout:
+                path: !php/const App\Gateway\RouteName::LOGOUT
+
     # Note: Only the *first* matching rule is applied
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { route: !php/const App\Gateway\RouteName::ADMIN_PREFIX_REGEX, roles: !php/const App\User\Credentials\User::ROLE_ADMIN }
+        - { route: !php/const App\Gateway\RouteName::LOGIN_REGEX, roles: IS_ANONYMOUS }
+        - { path: ^/.*, roles: IS_AUTHENTICATED_FULLY }
+        #- { path: ^/, roles: PUBLIC_ACCESS }
 
 when@test:
     security:
