@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{# @var lastAuthenticationError \Symfony\Component\Security\Core\Exception\AuthenticationException|null #}
+{# @var lastUsername string #}
+
+{% block body %}
+    <h1>Login</h1>
+
+    {% if lastAuthenticationError %}
+        <p>{{ lastAuthenticationError.messageKey|trans(lastAuthenticationError.messageData, "security") }}</p>
+    {% endif %}
+
+    <form action="{{ url(app.routes.LOGIN) }}" method="post">
+        <label for="username">Email:</label>
+        <input type="text" id="username" name="_username" value="{{ lastUsername }}" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="_password" required>
+
+        {# If you want to control the URL the user is redirected to on success
+        <input type="hidden" name="_target_path" value="/account"> #}
+
+        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+
+        <button type="submit">login</button>
+    </form>
+{% endblock %}
