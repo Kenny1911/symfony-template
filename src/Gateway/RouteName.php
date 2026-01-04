@@ -16,6 +16,8 @@ final readonly class RouteName
     public const string LOGIN = 'login';
     public const string LOGIN_REGEX = '^login$';
     public const string LOGOUT = 'logout';
+    public const string UPLOADS_FILE = 'uploads.file';
+    public const string UPLOADS_FILE_REGEX = '^uploads\.file$';
 
     // Admin
     public const string ADMIN_PREFIX = 'admin.';

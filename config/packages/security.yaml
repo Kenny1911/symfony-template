@@ -40,6 +40,7 @@ security:
     access_control:
         - { route: !php/const App\Gateway\RouteName::ADMIN_PREFIX_REGEX, roles: !php/const App\User\Credentials\User::ROLE_ADMIN }
         - { route: !php/const App\Gateway\RouteName::LOGIN_REGEX, roles: IS_ANONYMOUS }
+        - { route: !php/const App\Gateway\RouteName::UPLOADS_FILE_REGEX, roles: PUBLIC_ACCESS }
         - { path: ^/.*, roles: IS_AUTHENTICATED_FULLY }
         #- { path: ^/, roles: PUBLIC_ACCESS }
 
