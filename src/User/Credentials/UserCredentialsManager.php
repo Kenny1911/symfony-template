@@ -8,7 +8,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
 use Symfony\Component\PasswordHasher\PasswordHasherInterface;
-use Symfony\Component\Uid\Uuid;
 
 /**
  * @api
@@ -22,6 +21,16 @@ final readonly class UserCredentialsManager
         private ManagerRegistry $doctrine,
     ) {
         $this->passwordHasher = $passwordHasherFactory->getPasswordHasher(User::class);
+    }
+
+    public function findUserById(FindUserById $query): ?User
+    {
+        return $this->getEntityManager()->getRepository(User::class)->find($query->id);
+    }
+
+    public function findUserByUsername(FindUserByUsername $query): ?User
+    {
+        return $this->getEntityManager()->getRepository(User::class)->findOneBy(['username' => $query->username]);
     }
 
     /**
@@ -51,7 +60,7 @@ final readonly class UserCredentialsManager
     public function changeUserPassword(ChangeUserPassword $command): void
     {
         $em = $this->getEntityManager();
-        $user = $this->findUserById($command->id) ?? throw UserNotFound::create();
+        $user = $this->findUserById(new FindUserById($command->id)) ?? throw UserNotFound::create();
 
         if (false === $this->passwordHasher->verify(hashedPassword: $user->getPassword(), plainPassword: $command->oldPassword)) {
             throw InvalidUserPassword::create();
@@ -68,7 +77,7 @@ final readonly class UserCredentialsManager
     public function resetUserPassword(ResetUserPassword $command): void
     {
         $em = $this->getEntityManager();
-        $user = $this->findUserById($command->id) ?? throw UserNotFound::create();
+        $user = $this->findUserById(new FindUserById($command->id)) ?? throw UserNotFound::create();
         $user->changePassword($this->hashPassword($command->newPassword));
         $em->persist($user);
         $em->flush();
@@ -83,11 +92,6 @@ final readonly class UserCredentialsManager
         }
 
         throw new \LogicException('Invalid EntityManager for User class.');
-    }
-
-    private function findUserById(Uuid $id): ?User
-    {
-        return $this->getEntityManager()->getRepository(User::class)->find($id);
     }
 
     /**
