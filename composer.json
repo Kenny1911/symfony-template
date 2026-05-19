@@ -15,7 +15,7 @@
         "kenny1911/doctrine-views-sync": "^0.2",
         "kenny1911/symfony-attribute-form": "^0.1",
         "kenny1911/symfony-http-exception": "^0.3",
-        "kenny1911/twig-view": "^0.1",
+        "kenny1911/twig-view": "^0.2.1",
         "knplabs/knp-paginator-bundle": "^6.10",
         "psr/clock": "^1.0",
         "symfony/asset": "7.4.*",
