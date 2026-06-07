@@ -15,22 +15,22 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
 return static function (ContainerConfigurator $di): void {
     $di->services()
         ->set('twig.view_renderer', ChainRenderer::class)
-        ->args([
-            [
-                inline_service(ViewRenderer::class)
-                    ->args([
-                        service('twig'),
-                    ]),
-                inline_service(AttributeViewRenderer::class)
-                    ->args([
-                        service('twig'),
-                    ]),
-            ],
-        ])
+            ->args([
+                [
+                    inline_service(ViewRenderer::class)
+                        ->args([
+                            service('twig'),
+                        ]),
+                    inline_service(AttributeViewRenderer::class)
+                        ->args([
+                            service('twig'),
+                        ]),
+                ],
+            ])
 
         ->set(ViewListener::class)
-        ->args([
-            service('twig.view_renderer'),
-        ])
-        ->tag('kernel.event_subscriber');
+            ->args([
+                service('twig.view_renderer'),
+            ])
+            ->tag('kernel.event_subscriber');
 };
