@@ -10,10 +10,10 @@
     cacheDirectory="var/psalm"
 >
     <projectFiles>
-        <directory name="src" />
-        <directory name="tests" />
+        <directory name="src"/>
+        <directory name="tests"/>
         <ignoreFiles>
-            <directory name="vendor" />
+            <directory name="vendor"/>
             <directory name="tools"/>
             <directory name="var"/>
         </ignoreFiles>
@@ -35,5 +35,6 @@
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
         <pluginClass class="Typhoon\CheckVisibilityPsalmPlugin\CheckVisibilityPlugin"/>
+        <pluginClass class="Weirdan\DoctrinePsalmPlugin\Plugin"/>
     </plugins>
 </psalm>
