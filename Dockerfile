@@ -1,6 +1,6 @@
-FROM composer:2.9.2 as composer
+FROM composer:2.10.1 as composer
 
-FROM php:8.4.15-fpm
+FROM php:8.4.22-fpm
 
 # Common instructions
 RUN apt-get update && \
